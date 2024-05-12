@@ -22,6 +22,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
   ConsultaCep(event);
 });
 
+
 //Função de Previsão do tempo
 function PrevisaoTempo(){
   const latitude = document.querySelector("#latitude").value;
@@ -34,9 +35,6 @@ function PrevisaoTempo(){
 
     document.querySelector("#previsao").innerHTML = `Previsão do tempo de acordo com a região: ${temperatura} °C`
   })
-
-  console.log(`Latitude: ${latitude}`)
-  console.log(`Longitude: ${longitude}`)
 }
 
 document.querySelector("form").addEventListener("submit", PrevisaoTempo)
