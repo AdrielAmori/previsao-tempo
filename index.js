@@ -1,37 +1,36 @@
 // Funcao Consulta de CEP
-function ConsultaCep(event) {
+async function ConsultaCep(event) {
   event.preventDefault();
 
   const cep = document.querySelector("#cep").value;
 
-  fetch(`https://viacep.com.br/ws/${cep}/json/`)
-    .then((response) => response.json())
-    .then((data) => {
-      const logradouro = data.logradouro;
-      const bairro = data.bairro;
-      const uf = data.uf;
+  const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+  const data = await response.json();
 
-      document.querySelector("#logradouro").innerHTML = logradouro
-      document.querySelector("#bairro").innerHTML = bairro
-      document.querySelector("#uf").innerHTML = uf
-    });
+  const logradouro = data.logradouro;
+  const bairro = data.bairro;
+  const uf = data.uf;
+
+  document.querySelector("#logradouro").innerHTML = logradouro;
+  document.querySelector("#bairro").innerHTML = bairro;
+  document.querySelector("#uf").innerHTML = uf;
 }
 
-
-
-
 //Função de Previsão do tempo
-function PrevisaoTempo(){
+async function PrevisaoTempo() {
   const latitude = document.querySelector("#latitude").value;
   const longitude = document.querySelector("#longitude").value;
 
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`)
-  .then((response) => response.json())
-  .then(data => {
-    const temperatura = data.hourly.temperature_2m[0];
+  const response = await fetch(
+    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m`
+  );
+  const data = await response.json();
 
-    document.querySelector("#previsao").innerHTML = `Previsão do tempo de acordo com a região: ${temperatura} °C`
-  })
+  const temperatura = data.hourly.temperature_2m[0];
+
+  document.querySelector(
+    "#previsao"
+  ).innerHTML = `Previsão do tempo de acordo com a região: ${temperatura} °C`;
 }
 
 document.querySelector("form").addEventListener("submit", function (event) {
@@ -39,4 +38,4 @@ document.querySelector("form").addEventListener("submit", function (event) {
   ConsultaCep(event);
 });
 
-document.querySelector("form").addEventListener("submit", PrevisaoTempo)
+document.querySelector("form").addEventListener("submit", PrevisaoTempo);
