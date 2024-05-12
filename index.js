@@ -1,5 +1,5 @@
 // Funcao Consulta de CEP
-async function ConsultaCep(event) {
+const ConsultaCep = async (event) => {
   event.preventDefault();
 
   const cep = document.querySelector("#cep").value;
@@ -7,17 +7,15 @@ async function ConsultaCep(event) {
   const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
   const data = await response.json();
 
-  const logradouro = data.logradouro;
-  const bairro = data.bairro;
-  const uf = data.uf;
+  const { logradouro, bairro, uf } = data;
 
   document.querySelector("#logradouro").innerHTML = logradouro;
   document.querySelector("#bairro").innerHTML = bairro;
   document.querySelector("#uf").innerHTML = uf;
-}
+};
 
 //Função de Previsão do tempo
-async function PrevisaoTempo() {
+const PrevisaoTempo = async () => {
   const latitude = document.querySelector("#latitude").value;
   const longitude = document.querySelector("#longitude").value;
 
@@ -31,9 +29,9 @@ async function PrevisaoTempo() {
   document.querySelector(
     "#previsao"
   ).innerHTML = `Previsão do tempo de acordo com a região: ${temperatura} °C`;
-}
+};
 
-document.querySelector("form").addEventListener("submit", function (event) {
+document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
   ConsultaCep(event);
 });
