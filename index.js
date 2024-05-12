@@ -17,10 +17,7 @@ function ConsultaCep(event) {
     });
 }
 
-document.querySelector("form").addEventListener("submit", function (event) {
-  event.preventDefault();
-  ConsultaCep(event);
-});
+
 
 
 //Função de Previsão do tempo
@@ -36,5 +33,10 @@ function PrevisaoTempo(){
     document.querySelector("#previsao").innerHTML = `Previsão do tempo de acordo com a região: ${temperatura} °C`
   })
 }
+
+document.querySelector("form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  ConsultaCep(event);
+});
 
 document.querySelector("form").addEventListener("submit", PrevisaoTempo)
