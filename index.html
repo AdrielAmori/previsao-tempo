@@ -56,7 +56,8 @@
         </div>
         <div class="mb-5">
           <label for="exampleFormControlInput1" class="form-label mb-4">Digite o CEP:</label>
-          <input type="text" class="form-control mb-4" id="exampleFormControlInput1" placeholder="Insira o CEP">
+          <input id="cep" type="text" class="form-control mb-4" id="exampleFormControlInput1"
+            placeholder="Insira o CEP">
         </div>
         <div class="mb-5">
           <label for="exampleFormControlInput1" class="form-label mb-4">Digite a latitude e longitude para saber a
@@ -67,7 +68,7 @@
           </div>
         </div>
         <div class="d-grid gap-2">
-          <button class="btn btn-primary" type="button">Acessar</button>
+          <button class="btn btn-primary" type="submit">Acessar</button>
         </div>
       </form>
     </div>
@@ -85,9 +86,9 @@
         <span>Localidade/UF</span>
       </div>
       <div class="res1">
-        <span>Justino Cobra</span>
-        <span>Vila Ema</span>
-        <span>SP</span>
+        <span id="logradouro"></span>
+        <span id="bairro"></span>
+        <span id="uf"></span>
       </div>
     </div>
 
@@ -97,7 +98,7 @@
       <span><img src="./img/nuvem2.svg" style="width: 100px;" alt=""></span>
     </div>
     <div class="previsaoTempo">
-      <span>Previsão de tempo de acordo com a região: 24° C</span>
+      <span id="previsao"></span>
     </div>
 
     <!-- Footer -->
@@ -109,7 +110,7 @@
     </footer>
   </section>
 
-<script src="index.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
